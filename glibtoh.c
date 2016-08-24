@@ -15,8 +15,29 @@
 int no_moves;
 GSList *src=NULL,*dest=NULL,*aux=NULL;
 void DiskMove(GSList **from,GSList **to, char s,char d);
+void DiscMoverec(int n, char source, char dest, char spare)
+{
+    if (n == 0)
+    {
+        return;
+    }
+    DiscMoverec(n-1, source, spare, dest);
+    printf(" Move the disk %d from Peg %c -> Peg %c\n", n, source, dest);
+    DiscMoverec(n-1, spare, dest, source);
+}
 
-int main()
+int recmain()
+{
+    printf("Enter no. of disks : ");
+    int n;
+    scanf("%d",&n); // Number of disks
+    DiscMoverec(n, 'A', 'C', 'B');  // A, B and C are names of Pegs
+
+    printf("Total no. of steps required : %d\n",(int)(pow(2,n))-1);
+    return 0;
+}
+
+int itrmain()
 {
     // Input: number of disks
     printf("Enter no. of disks : ");
@@ -114,3 +135,21 @@ void DiskMove(GSList **from,GSList **to, char s, char d)
     }
 }
  
+int main()
+{
+    int choice;
+    printf("enter : 1 for recursive way\n   2: for iterative method\n");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1: recmain();
+                break;
+
+        case 2: itrmain();
+                break;
+
+        default: printf("Wrong choice\n");
+
+    }
+    return 0;
+}
