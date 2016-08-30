@@ -19,14 +19,17 @@ int main()
  	printf("Enter value of n and i : ");
  	scanf("%d",&n);
  	scanf("%d",&i);
-    temp = (struct node *)malloc(sizeof(struct node));
+    struct node **ptr;
+    ptr=&queue;
+    
  	for(j=1;j<=n;j++)
  	{
+ 		temp = (struct node *)malloc(sizeof(struct node));
     	temp->num = j;
         temp->next = NULL;
-        if (queue == NULL)
+        if (*ptr == NULL)
         {
-            queue = temp;
+            *ptr = temp;
         }
         else
         {
@@ -34,12 +37,12 @@ int main()
         }
         rear = temp;
     }
-    rear->next=queue;
+    rear->next=*ptr;;
 
 
     //printq(queue);
     live = play(&queue, i);
-    printf("The person to survive is : %d\n", live);
+    printf("Hence the person at position %d survives. (WINNER) \n", live);
     free(queue);
  
     return 0;
@@ -59,7 +62,7 @@ int play(struct node **queue, int k)
             p = p->next;
         }
         q->next = p->next;
-        printf("%d has been killed.\n", p->num);
+        printf("The person at position %d is removed.\n", p->num);
         free(p);
         p = q->next;
     }
