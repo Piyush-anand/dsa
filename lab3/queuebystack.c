@@ -83,7 +83,7 @@ void enqueue()
 {
     int data, i;
  
-    printf("Enter data into queue");
+    printf("Enter data to be entered in queue");
     scanf("%d", &data);
     push1(data);
     count++;

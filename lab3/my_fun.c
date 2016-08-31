@@ -1,5 +1,6 @@
 #include "my_lib.h"
 
+int count =0;
 void create()
 {
     top1 = top2 = -1;
