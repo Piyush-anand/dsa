@@ -1,5 +1,4 @@
-q
-inc =  -lm 
+$(pkg-config --libs --cflags glib-2.0) -lminc =  -lm 
 
 all: my_fun.o main.o
 	gcc -w -o my_exe my_fun.o main.o -Wno-deprecated -I ${inc} 
