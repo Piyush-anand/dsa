@@ -61,3 +61,13 @@ void dequeue()
     	}
 	}
 }
+
+void display()
+{
+    int i;
+ 
+    for (i = 0;i <= top1;i++)
+    {
+        printf(" %d ", st1[i]);
+    }
+}

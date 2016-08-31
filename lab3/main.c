@@ -1,8 +1,8 @@
-#include <my_lib.h>
+#include "my_lib.h"
 
-int st1[100], st2[100];
+// int st1[100], st2[100];
 int top1 = -1, top2 = -1;
-int count = 0;
+// int count = 0;
  
 void main()
 {
