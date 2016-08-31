@@ -13,7 +13,10 @@ void push1(int data)
 
 int pop1()
 {
-    return(st1[top1--]);
+    int k;
+    k=st1[top1];
+    top1--;
+    return k;
 }
 
 void push2(int data)
@@ -22,8 +25,11 @@ void push2(int data)
 }
 
 int pop2()
-{
-    return(st2[top2--]);
+{   
+    int k;
+    k=st2[top2];
+    top2--;
+    return k;
 }
 
 void enqueue()
@@ -38,7 +44,7 @@ void enqueue()
 
 void dequeue()
 {
-    int i;
+    int i,k;
  
  	if(top1==-1 && top2==-1)
  	{
@@ -47,15 +53,16 @@ void dequeue()
  	}
  	else
  	{
-    	for (i = 0;i <= count;i++)
+    	for (i = 0;i < count;i++)
     	{
         	push2(pop1());
     	}
 
-    	pop2();
+        k=pop2();
+    	printf("Popped element : %d\n ",k);
     	count--;
     	
-    	for (i = 0;i <= count;i++)
+    	for (i = 0;i <count;i++)
     	{
         	push1(pop2());
     	}
@@ -65,9 +72,16 @@ void dequeue()
 void display()
 {
     int i;
- 
-    for (i = 0;i <= top1;i++)
+    if(top1==-1)
     {
-        printf(" %d ", st1[i]);
+        printf("error .. queue is empty\n");
+        return;
+    }
+    else
+    {
+        for (i = 0;i <= top1;i++)
+        {
+            printf(" %d ", st1[i]);
+        }
     }
 }
