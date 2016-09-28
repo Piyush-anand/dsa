@@ -1,6 +1,11 @@
+/*Piyush Anand
+B15226
+lab 6
+ques 2*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 int **maker(int n,int m)
 {
@@ -12,7 +17,10 @@ int **maker(int n,int m)
 
 	for(i=0;i<n;i++)
 		for(j=0;j<m;j++)
+		{
+			srand(time(NULL)+i+j);
 			a[i][j]=rand();
+		}
 	return a;
 }
 

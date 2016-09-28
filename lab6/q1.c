@@ -1,7 +1,11 @@
+/*Piyush Anand
+B15226
+lab 6
+ques 1*/
 #include <stdio.h>
 #include <stdlib.h>
 
-void swapPointer(int *a, int *b);
+void swapPointer(int **a, int **b);
 void printPointerValue(int *a);
 int compareInts(int *a,int *b);
 int compareStrings(char *a, char *b);
@@ -20,8 +24,10 @@ int main()
 		case 1: printf("Enter two numbers : \n");
 				scanf("%d %d",&a,&b);
 				printf("Before swapping :\na=%d\tb=%d\n",a,b);
-				swapPointer(&a,&b);
-				printf("After swapping :\na=%d\tb=%d\n",a,b);
+				int *a2,*b2;
+				a2=&a;b2=&b;
+				swapPointer(&a2,&b2);
+				printf("After swapping :\na=%d\tb=%d\n",*a2,*b2);
 				break;
 
 		case 2: printf("Enter a no. to be printed : ");
@@ -47,6 +53,7 @@ int main()
 		case 5: printf("enter Num :");
 				scanf("%d",&a);
 				countTillThisNum(a);
+				printf("\n");
 				break;
 
 		default: printf("Wrong Input\n");
@@ -56,12 +63,12 @@ int main()
 	return 0;
 }
 
-void swapPointer(int *a,int *b)
+void swapPointer(int **a,int **b)
 {
-	int c;
-	c=*a;
+	int **c;
+	*c=*a;
 	*a=*b;
-	*b=c;
+	*b=*c;
 }
 
 void printPointerValue(int *a)
@@ -86,7 +93,7 @@ int compareStrings(char *a,char *b)
 		if(*a>*b)
 		{
 			flag=1;
-			printf("he");
+			// printf("he");
 			break;
 		}
 		else if(*a<*b)
@@ -114,13 +121,20 @@ int compareStrings(char *a,char *b)
 
 void countTillThisNum(int num)
 {
-	int *a,b;
-	b=1;
-	a=&b;
-	while((*a)<=num)
+	int *a;
+	a=&num;
+
+	if((*a)==1)
+		printf("%d ",*a);
+	else
 	{
-		printPointerValue(a);
-		// printf("%d ",*a);
-		(*a)++;
+		countTillThisNum((*a)-1);
+		printf("%d ",*a);
 	}
+	// while((*a)<=num)
+	// {
+	// 	printPointerValue(a);
+	// 	// printf("%d ",*a);
+	// 	(*a)++;
+	// }
 }
